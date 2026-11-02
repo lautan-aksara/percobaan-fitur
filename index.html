@@ -58,7 +58,7 @@ function tampilkan_konfirmasi() {
 	document.getElementById("kotak").innerHTML = text;
 }
 function reload_webview() {
-	AndroidInterface.reloadWebView();
+	Android.reloadWebView();
 }
 function keluar_aplikasi() {
 	AndroidInterface.exitApp();
@@ -67,10 +67,10 @@ function restart_aplikasi() {
 	AndroidInterface.restartApp();
 }
 function aktifkan_tangkapan_layar() {
-	AndroidInterface.bisaTangkapanLayar();
+	Android.bisaTangkapanLayar();
 }
 function nonaktifkan_tangkapan_layar() {
-	AndroidInterface.tidakBisaTangkapanLayar();
+	Android.tidakBisaTangkapanLayar();
 }
 function minimalkan_aplikasi() {
 	AndroidInterface.minimizeApp();
