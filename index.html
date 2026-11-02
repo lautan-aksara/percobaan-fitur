@@ -1,0 +1,83 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<style>
+button {
+width: -webkit-fill-available;
+padding: 10px;
+}
+</style>
+<script>
+try {
+	var buah = Android.getBuah();
+	/* Jika ditemukan, maka jangan lakukan apa-apa atau buat alert! */
+	alert('Buah ditemukan!');
+} catch (error) {
+	if (error instanceof ReferenceError) {
+		/* Jika tidak ditemukan, maka alihkan ke situs jika online dan ke policy jika offine atau buat alert! */
+		alert('Buah tidak ditemukan!');
+	} else {
+		/* Jika terjadi jenis-jenis kesalahan lain, maka alihkan ke situs jika online dan ke policy jika offine atau buat alert! */
+		alert('Terjadi kesalahan lain: ' + error.message);
+	}
+}
+</script>
+</head>
+<body>
+
+<button onclick="tampilkan_iklan_banner()">Pemantik Banner</button><br><br>
+<button onclick="coba_alert()">Alert OK</button><br><br>
+<button onclick="tampilkan_konfirmasi()">Konfirmasi Yes dan Tidak</button><br><br>
+<button onclick="reload_webview()">Reload WebView</button><br><br>
+<button onclick="keluar_aplikasi()">Exit</button><br><br>
+<button onclick="restart_aplikasi()">Restrat</button><br><br>
+<button onclick="aktifkan_tangkapan_layar()">Aktifkan Tangkapan Layar</button><br><br>
+<button onclick="nonaktifkan_tangkapan_layar()">Non Aktifkan Tangkapan Layar</button><br><br>
+<button onclick="minimalkan_aplikasi()">Minimalkan App</button><br><br>
+<button onclick="bersihkan_cache()">Bersihkan Cache</button><br><br>
+
+<div id="kotak" style="background: #efefef; border: 1px dashed #000000; width: -webkit-fill-available; height: 1500px;padding: 10px;">
+Hallo world!!!
+</div>
+
+<script>
+function tampilkan_iklan_banner() {
+	AndroidInterface.showBannerAd();
+}
+function coba_alert() {
+	alert("Alert berhasil.");
+}
+function tampilkan_konfirmasi() {
+	let text = "Tekan tombol OK atau Cancel!";
+	if (confirm(text) == true) {
+		text = "Kamu menekan OK!";
+	} else {
+		text = "Kamu menekan batal!";
+	}
+	document.getElementById("kotak").innerHTML = text;
+}
+function reload_webview() {
+	AndroidInterface.reloadWebView();
+}
+function keluar_aplikasi() {
+	AndroidInterface.exitApp();
+}
+function restart_aplikasi() {
+	AndroidInterface.restartApp();
+}
+function aktifkan_tangkapan_layar() {
+	AndroidInterface.bisaTangkapanLayar();
+}
+function nonaktifkan_tangkapan_layar() {
+	AndroidInterface.tidakBisaTangkapanLayar();
+}
+function minimalkan_aplikasi() {
+	AndroidInterface.minimizeApp();
+}
+function bersihkan_cache() {
+	AndroidInterface.clearWebCache();
+}
+</script>
+</body>
+</html>
